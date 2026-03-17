@@ -39,3 +39,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Scripts with API keys - never commit
+scripts/fetch-sf-data.mjs
+scripts/enrich-places.mjs
+scripts/enrich-batch.mjs
+scripts/fix-*.mjs
+scripts/fetch-*.mjs
+scripts/*-log*.txt
+scripts/*-progress.json
+scripts/enriched-places.json
+scripts/all-places.json
+scripts/osm-data.json
+scripts/datasf-data.json
+scripts/sf-places.json
+
