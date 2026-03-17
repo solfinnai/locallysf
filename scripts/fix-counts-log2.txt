@@ -1,0 +1,372 @@
+Fixing 360 places with reviewCount <= 5
+Cost: ~$11.52
+[1/360] Rich Table... ✅ 1534 reviews
+[2/360] DACHA Kitchen & Bar... ✅ 404 reviews
+[3/360] Bottega... ✅ 1056 reviews
+[4/360] The Progress... ✅ 1266 reviews
+[5/360] Aziza... ✅ 846 reviews
+[6/360] Dalida Restaurant... ✅ 683 reviews
+[7/360] Lokma... ✅ 1421 reviews
+[8/360] Scoma's Restaurant... ✅ 6813 reviews
+[9/360] Pearl 6101... ✅ 637 reviews
+[10/360] Sisterita... ✅ 677 reviews
+[11/360] Sweet Maple... ✅ 4465 reviews
+[12/360] Seven Hills... ✅ 894 reviews
+[13/360] Collina... ✅ 164 reviews
+[14/360] Boa's CVC... ✅ 129 reviews
+[15/360] Lily... ✅ 443 reviews
+[16/360] Octavia... ✅ 786 reviews
+[17/360] CHEF XIONG KITCHEN 川香園鉄木真... ✅ 96 reviews
+[18/360] Fog Harbor Fish House... ✅ 9925 reviews
+[19/360] Iggy's Place... ✅ 253 reviews
+[20/360] Prubechu... ✅ 524 reviews
+[21/360] House of Nanking... ✅ 5093 reviews
+[22/360] Hong Kong Clay Pot Restaurant... ✅ 1735 reviews
+[23/360] R & G Lounge... ✅ 3755 reviews
+[24/360] Z & Y Restaurant... ✅ 3715 reviews
+[25/360] City View Restaurant... ✅ 1358 reviews
+[26/360] Sam Wo Restaurant... ✅ 1348 reviews
+[27/360] Great Eastern Restaurant... ✅ 1823 reviews
+[28/360] Begoni Bistro... ✅ 1031 reviews
+[29/360] Spicy King... ✅ 1028 reviews
+[30/360] 御食园 Z & Y Peking Duck... ✅ 1251 reviews
+[31/360] Capital... ✅ 913 reviews
+[32/360] Good Mong Kok Bakery... ✅ 2420 reviews
+[33/360] Hon's Wun-Tun House... ✅ 859 reviews
+[34/360] Dragon Beaux... ✅ 2047 reviews
+[35/360] WenChang Dumpling Restaurant... ✅ 368 reviews
+[36/360] New Woey Loy Goey Restaurant... ✅ 445 reviews
+[37/360] Mister Jiu's... ✅ 1157 reviews
+[38/360] Hunan House... ✅ 636 reviews
+[39/360] Chong Qing Xiao Mian... ✅ 1247 reviews
+[40/360] Hon’s Wun-Tun House 洪記面家... ✅ 698 reviews
+[41/360] Taquería El Farolito... ✅ 5591 reviews
+[42/360] La Taqueria... ✅ 7087 reviews
+[43/360] Taqueria Cancun... ✅ 2507 reviews
+[44/360] La Oaxaqueña... ✅ 905 reviews
+[45/360] SanJalisco Mexican Restaurant... ✅ 1604 reviews
+[46/360] Taqueria Vallarta... ✅ 1846 reviews
+[47/360] El Buen Comer... ✅ 637 reviews
+[48/360] Puerto Alegre... ✅ 812 reviews
+[49/360] Loló... ✅ 1878 reviews
+[50/360] El Rey Taquiza Artesanal... ✅ 262 reviews
+  [saved 50/360]
+[51/360] Taqueria Pancho Villa... ✅ 4058 reviews
+[52/360] el Mil Amores... ✅ 493 reviews
+[53/360] La Cumbre Taqueria SF... ✅ 776 reviews
+[54/360] El Metate... ✅ 413 reviews
+[55/360] Taqueria El Farolito... ✅ 2244 reviews
+[56/360] La Corneta Taqueria... ✅ 1610 reviews
+[57/360] Gallardo's... ✅ 1336 reviews
+[58/360] La Palma Mexicatessen... ✅ 1320 reviews
+[59/360] Papalote Mexican Grill VALENCIA... ✅ 1392 reviews
+[60/360] Taqueria Guadalajara... ✅ 1456 reviews
+[61/360] The Italian Homemade Company... ✅ 3264 reviews
+[62/360] North Beach Restaurant... ✅ 829 reviews
+[63/360] Sodini's Trattoria... ✅ 915 reviews
+[64/360] Bocconcino... ✅ 317 reviews
+[65/360] Fior d'Italia... ✅ 1037 reviews
+[66/360] Cotogna... ✅ 2160 reviews
+[67/360] Mona Lisa Restaurant... ✅ 2375 reviews
+[68/360] Piccolo Forno... ✅ 2122 reviews
+[69/360] Capo's by Tony Gemignani... ✅ 901 reviews
+[70/360] Tommaso's... ✅ 891 reviews
+[71/360] Cilentano Pasta Bar... ✅ 401 reviews
+[72/360] Tony's Pizza Napoletana... ✅ 9905 reviews
+[73/360] Sotto Mare... ✅ 4938 reviews
+[74/360] Ideale... ✅ 483 reviews
+[75/360] Firenze By Night... ✅ 661 reviews
+[76/360] Original Joe's... ✅ 3386 reviews
+[77/360] Trattoria Contadina... ✅ 933 reviews
+[78/360] Tosca Cafe... ✅ 598 reviews
+[79/360] Acquolina... ✅ 1174 reviews
+[80/360] Luisa's Restaurant Wine Bar Since 1959... ✅ 1078 reviews
+[81/360] Ryoko's Japanese Restaurant & Bar... ✅ 2053 reviews
+[82/360] Taniku Izakaya... ✅ 405 reviews
+[83/360] Izakaya mayumi... ✅ 141 reviews
+[84/360] Goemon Izakaya Bar & Karaoke Lounge... ✅ 22 reviews
+[85/360] The Public Izakaya... ✅ 403 reviews
+[86/360] Zentarou Sushi and Sake Bar... ✅ 216 reviews
+[87/360] Ebisu Restaurant... ✅ 1203 reviews
+[88/360] Ju-Ni... ✅ 504 reviews
+[89/360] Kuma on Valencia... ✅ 199 reviews
+[90/360] Akari Japanese Bistro... ✅ 110 reviews
+[91/360] Ozumo San Francisco... ✅ 1649 reviews
+[92/360] Roka Akor - San Francisco... ✅ 1376 reviews
+[93/360] Rintaro... ✅ 1346 reviews
+[94/360] HINODEYA Ramen & Bar Chestnut... ✅ 824 reviews
+[95/360] Amami Sushi Bistro Geary... ✅ 70 reviews
+[96/360] Chotto Matte San Francisco... ✅ 829 reviews
+[97/360] Kabuto Restaurant... ✅ 304 reviews
+[98/360] Wako Japanese Restaurant... ✅ 498 reviews
+[99/360] Izakaya Sozai... ✅ 624 reviews
+[100/360] PABU Izakaya... ✅ 1392 reviews
+  [saved 100/360]
+[101/360] Early To Rise, Scratch Made Brunch... ✅ 413 reviews
+[102/360] Wooden Spoon... ✅ 778 reviews
+[103/360] Sisterita... ✅ 677 reviews
+[104/360] Sweet Maple... ✅ 4465 reviews
+[105/360] Outerlands... ✅ 1691 reviews
+[106/360] Peacock Pansy... ✅ 289 reviews
+[107/360] Plain Jane... ✅ 407 reviews
+[108/360] Eight AM Brunch... ✅ 2015 reviews
+[109/360] Board and Drink... ✅ 235 reviews
+[110/360] Fable... ✅ 1066 reviews
+[111/360] Mymy... ✅ 1974 reviews
+[112/360] Four Chairs... ✅ 386 reviews
+[113/360] Son and Garden... ✅ 1312 reviews
+[114/360] Plow... ✅ 2830 reviews
+[115/360] Lapisara Eatery... ✅ 1880 reviews
+[116/360] Doppio Coffee & Brunch... ✅ 350 reviews
+[117/360] The Grove Restaurant & Bar... ✅ 4839 reviews
+[118/360] Zazie... ✅ 3490 reviews
+[119/360] Spork Breakfast & Brunch... ✅ 80 reviews
+[120/360] Town's End Brunch... ✅ 654 reviews
+[121/360] The Coffee Movement... ✅ 548 reviews
+[122/360] Delah Coffee... ✅ 1074 reviews
+[123/360] HI NRG... ✅ 136 reviews
+[124/360] Ocean Beach Cafe... ✅ 655 reviews
+[125/360] Doppio Coffee & Brunch... ✅ 350 reviews
+[126/360] Goodhart Coffee Catering of San Francisco Bay Area... ✅ 453 reviews
+[127/360] Diamond Coffee N Pastry... ✅ 79 reviews
+[128/360] Q Specialty Coffee... ✅ 140 reviews
+[129/360] CoffeeShop | Bakery + Micro-Roastery... ✅ 176 reviews
+[130/360] Bazaar Café... ✅ 372 reviews
+[131/360] Home Coffee Roasters... ✅ 551 reviews
+[132/360] Flywheel Coffee Roasters... ✅ 1281 reviews
+[133/360] Better Half Coffee... ✅ 76 reviews
+[134/360] Sightglass Coffee... ✅ 3334 reviews
+[135/360] Royal Ground Coffee... ✅ 269 reviews
+[136/360] Simple Pleasures Cafe... ✅ 571 reviews
+[137/360] Third Wheel Coffee... ✅ 194 reviews
+[138/360] The Coffee Berry SF... ✅ 545 reviews
+[139/360] The Mill... ✅ 2215 reviews
+[140/360] Diamond Coffee N’ Pastry... ✅ 119 reviews
+[141/360] The Coffee Movement... ✅ 548 reviews
+[142/360] Doppio Coffee & Brunch... ✅ 350 reviews
+[143/360] Ocean Beach Cafe... ✅ 655 reviews
+[144/360] Third Wheel Coffee... ✅ 194 reviews
+[145/360] The Buena Vista... ✅ 7979 reviews
+[146/360] HI NRG... ✅ 136 reviews
+[147/360] Sightglass Coffee... ✅ 3334 reviews
+[148/360] Bazaar Café... ✅ 372 reviews
+[149/360] The Mill... ✅ 2215 reviews
+[150/360] Simple Pleasures Cafe... ✅ 571 reviews
+  [saved 150/360]
+[151/360] The Coffee Berry SF... ✅ 545 reviews
+[152/360] Four Barrel Coffee... ✅ 2644 reviews
+[153/360] Delah Coffee... ✅ 1074 reviews
+[154/360] Flywheel Coffee Roasters... ✅ 1281 reviews
+[155/360] Saint Frank Coffee... ✅ 1344 reviews
+[156/360] Better Half Coffee... ✅ 76 reviews
+[157/360] Diamond Coffee N Pastry... ✅ 79 reviews
+[158/360] Paper Son Coffee... ✅ 141 reviews
+[159/360] Sextant Coffee Roasters... ✅ 727 reviews
+[160/360] Home Coffee Roasters... ✅ 551 reviews
+[161/360] Smuggler's Cove... ✅ 3238 reviews
+[162/360] Pacific Cocktail Haven... ✅ 997 reviews
+[163/360] The View Lounge... ✅ 3149 reviews
+[164/360] Blackbird... ✅ 698 reviews
+[165/360] Bar Iris... ✅ 238 reviews
+[166/360] Owl Tree... ✅ 629 reviews
+[167/360] Trick Dog... ✅ 1321 reviews
+[168/360] Whitechapel... ✅ 1185 reviews
+[169/360] Would You Believe... ✅ 144 reviews
+[170/360] Bar Gemini... ✅ 83 reviews
+[171/360] Left Door... ✅ 141 reviews
+[172/360] Lost Cat Bar & Bites... ✅ 249 reviews
+[173/360] Propagation... ✅ 248 reviews
+[174/360] Moongate Lounge... ✅ 224 reviews
+[175/360] ROOFTOP 25... ✅ 1112 reviews
+[176/360] Li Po Cocktail Lounge... ✅ 1058 reviews
+[177/360] TONGA ROOM & HURRICANE BAR... ✅ 2368 reviews
+[178/360] Holy Water... ✅ 606 reviews
+[179/360] Casements Bar... ✅ 428 reviews
+[180/360] Novela... ✅ 1675 reviews
+[181/360] ZOË Cocktail Bar & Bites... ✅ 167 reviews
+[182/360] Would You Believe... ✅ 144 reviews
+[183/360] Beso Mae Cocktail Lounge... ✅ 22 reviews
+[184/360] The Alembic... ✅ 816 reviews
+[185/360] Trick Dog... ✅ 1321 reviews
+[186/360] Smuggler's Cove... ✅ 3238 reviews
+[187/360] Local Edition... ✅ 2546 reviews
+[188/360] Persona... ✅ 283 reviews
+[189/360] The Nags Head... ✅ 77 reviews
+[190/360] Bar Iris... ✅ 238 reviews
+[191/360] Bourbon & Branch... ✅ 1723 reviews
+[192/360] Bar Maritime... ✅ 57 reviews
+[193/360] 540 Bar... ✅ 62 reviews
+[194/360] The Beehive... ✅ 592 reviews
+[195/360] Stoa... ✅ 139 reviews
+[196/360] Cavaña... ✅ 415 reviews
+[197/360] Alchemist Bar & Lounge... ✅ 1047 reviews
+[198/360] Owl Tree... ✅ 629 reviews
+[199/360] Lost and Found Cocktail Bar... ✅ 206 reviews
+[200/360] ABV... ✅ 1098 reviews
+  [saved 200/360]
+[201/360] Union Square... ✅ 37116 reviews
+[202/360] Crocker Galleria... ✅ 910 reviews
+[203/360] World Flagship Space Union Square... ✅ 19 reviews
+[204/360] Urban Outfitters... ✅ 910 reviews
+[205/360] Neiman Marcus... ✅ 839 reviews
+[206/360] Macy's... ✅ 9197 reviews
+[207/360] Louis Vuitton San Francisco Union Square... ✅ 355 reviews
+[208/360] Nike San Francisco... ✅ 2288 reviews
+[209/360] ZARA... ✅ 806 reviews
+[210/360] Angelic Pretty San Francisco... ✅ 90 reviews
+[211/360] 2_48_Stockton... ✅ 120 reviews
+[212/360] CHANEL SAN FRANCISCO... ✅ 188 reviews
+[213/360] Macy's Backstage... ✅ 60 reviews
+[214/360] Gump's San Francisco... ✅ 235 reviews
+[215/360] Harajuku Hearts... ✅ 19 reviews
+[216/360] Theory... ✅ 30 reviews
+[217/360] Apple Union Square... ✅ 4515 reviews
+[218/360] Maison Goyard... ✅ 331 reviews
+[219/360] FASHIONPHILE Salon at Union Square... ✅ 40 reviews
+[220/360] Bottega Veneta San Francisco... ✅ 33 reviews
+[221/360] Relic Vintage... ✅ 107 reviews
+[222/360] Love Street Vintage... ✅ 22 reviews
+[223/360] No Shop... ✅ 64 reviews
+[224/360] Valencia Street Vintage... ✅ 34 reviews
+[225/360] Wasteland... ✅ 408 reviews
+[226/360] Body Philosophy Club... ✅ 53 reviews
+[227/360] Missing Audrey Vintage... ✅ 24 reviews
+[228/360] Decades Of Fashion... ✅ 343 reviews
+[229/360] ReLove San Francisco... ✅ 107 reviews
+[230/360] LOVED AGAIN... ✅ 197 reviews
+[231/360] Sensitive Vintage Divisadero... ✅ 43 reviews
+[232/360] Held Over... ✅ 110 reviews
+[233/360] Afterlife Collective... ✅ 85 reviews
+[234/360] Moody Goose Vintage... ✅ 50 reviews
+[235/360] Chameleon Vintage Archive... ✅ 29 reviews
+[236/360] Try studio shop... ✅ 36 reviews
+[237/360] Blue Bin Vintage... ✅ 34 reviews
+[238/360] The Golden Hour... ✅ 17 reviews
+[239/360] Indigo Vintage Coopertive... ✅ 18 reviews
+[240/360] Chameleon Vintage... ✅ 22 reviews
+[241/360] Golden Gate Park... ⚠️ 0
+[242/360] PIER 39... ✅ 135614 reviews
+[243/360] de Young Museum... ✅ 9405 reviews
+[244/360] Golden Gate Bridge... ✅ 85547 reviews
+[245/360] Coit Tower... ✅ 15542 reviews
+[246/360] Alcatraz Island... ✅ 44140 reviews
+[247/360] Union Square... ✅ 37116 reviews
+[248/360] Legion of Honor... ✅ 4978 reviews
+[249/360] Twin Peaks... ✅ 13620 reviews
+[250/360] San Francisco Museum of Modern Art... ✅ 16252 reviews
+  [saved 250/360]
+[251/360] Hamon Observation Tower... ✅ 291 reviews
+[252/360] San Francisco Maritime National Historical Park... ✅ 5016 reviews
+[253/360] San Francisco Botanical Garden... ✅ 7889 reviews
+[254/360] Yerba Buena Gardens... ✅ 4429 reviews
+[255/360] Huntington Falls... ✅ 240 reviews
+[256/360] San Francisco Carousel & Bay Plunge at Pier 39... ✅ 833 reviews
+[257/360] Umbrella Alley San Francisco... ✅ 394 reviews
+[258/360] San Francisco Maritime National Historical Park Visitor Center... ✅ 445 reviews
+[259/360] Chinatown San Francisco... ✅ 10562 reviews
+[260/360] Fort Point National Historic Site... ✅ 3926 reviews
+[261/360] Exploratorium... ✅ 8397 reviews
+[262/360] Legion of Honor... ✅ 4978 reviews
+[263/360] de Young Museum... ✅ 9405 reviews
+[264/360] Museum of San Francisco... ✅ 4 reviews
+[265/360] The Walt Disney Family Museum... ✅ 4084 reviews
+[266/360] Museum of 3D Illusions... ✅ 647 reviews
+[267/360] Fine Arts Museums of San Francisco... ✅ 617 reviews
+[268/360] Asian Art Museum... ✅ 4212 reviews
+[269/360] San Francisco Museum of Modern Art... ✅ 16252 reviews
+[270/360] California Academy of Sciences... ✅ 5856 reviews
+[271/360] Museum of the African Diaspora... ✅ 509 reviews
+[272/360] Living Roof Observation Deck... ✅ 13 reviews
+[273/360] Golden Gate Park... ✅ 44068 reviews
+[274/360] Ripley's Believe It or Not!... ✅ 1521 reviews
+[275/360] Steinhart Aquarium... ✅ 165 reviews
+[276/360] Morrison Planetarium... ✅ 83 reviews
+[277/360] Hamon Observation Tower... ✅ 291 reviews
+[278/360] Children's Creativity Museum... ✅ 704 reviews
+[279/360] USS San Francisco Memorial... ✅ 5658 reviews
+[280/360] Counterculture Museum... ✅ 22 reviews
+[281/360] Golden Gate Park... ✅ 44068 reviews
+[282/360] Mission Dolores Park... ✅ 16182 reviews
+[283/360] Lincoln Park... ✅ 88 reviews
+[284/360] Pioneer Park... ✅ 6170 reviews
+[285/360] Corona Heights Park... ✅ 1561 reviews
+[286/360] Buena Vista Park... ✅ 2302 reviews
+[287/360] Lincoln Park Steps... ✅ 431 reviews
+[288/360] Rincon Park... ✅ 2981 reviews
+[289/360] Grandview Park... ✅ 1031 reviews
+[290/360] Union Square... ✅ 37116 reviews
+[291/360] Fulton Playground Park... ✅ 77 reviews
+[292/360] San Francisco Botanical Garden... ✅ 7889 reviews
+[293/360] Golden Gate National Recreation Area... ✅ 16917 reviews
+[294/360] Lafayette Park... ✅ 2673 reviews
+[295/360] Lands End Labyrinth... ✅ 1205 reviews
+[296/360] Ina Coolbrith Park... ✅ 1617 reviews
+[297/360] Alamo Square Park... ✅ 4302 reviews
+[298/360] Richmond Playground Park... ✅ 65 reviews
+[299/360] Crissy Field... ✅ 6008 reviews
+[300/360] Crane Cove Park... ✅ 515 reviews
+  [saved 300/360]
+[301/360] The Culture SF... ✅ 55 reviews
+[302/360] FITNESS SF - Fillmore... ✅ 465 reviews
+[303/360] Local's Fitness... ✅ 40 reviews
+[304/360] Sunset Gym... ✅ 170 reviews
+[305/360] 24 Hour Fitness... ✅ 1024 reviews
+[306/360] Fíor Fitness... ✅ 34 reviews
+[307/360] FITNESS SF - SoMa... ✅ 510 reviews
+[308/360] MuscleBeachSF Gym San Francisco fka FitClubSF... ✅ 52 reviews
+[309/360] Equinox Sports Club San Francisco... ✅ 277 reviews
+[310/360] Live Fit Gym • Hayes Valley... ✅ 109 reviews
+[311/360] The Yard Strength Training... ✅ 89 reviews
+[312/360] Live Fit Gym • Inner Richmond... ✅ 78 reviews
+[313/360] FITNESS SF - Transbay... ✅ 320 reviews
+[314/360] Richmond District YMCA... ✅ 44 reviews
+[315/360] Advanced Wellness... ✅ 56 reviews
+[316/360] Eden Fitness Studio... ✅ 52 reviews
+[317/360] Live Fit Gym - Mission... ✅ 82 reviews
+[318/360] Koret Health and Recreation Center... ✅ 201 reviews
+[319/360] Richmond Recreation Center... ✅ 76 reviews
+[320/360] TC Strength & Fitness: Group Class & Personal Training Gym... ✅ 57 reviews
+[321/360] Kabuki Springs & Spa... ✅ 832 reviews
+[322/360] Pearl Spa and Sauna... ✅ 593 reviews
+[323/360] SenSpa... ✅ 166 reviews
+[324/360] Serenity Wellness Spa... ✅ 225 reviews
+[325/360] Imperial Spa... ✅ 544 reviews
+[326/360] Cocoon Bay Area Day Spa - Noe Valley... ✅ 254 reviews
+[327/360] Archimedes Banya... ✅ 457 reviews
+[328/360] Nature’s Edge Spa... ✅ 93 reviews
+[329/360] Wela Thai Massage and Spa... ✅ 2889 reviews
+[330/360] QUA SPA at SOMA GRAND... ✅ 131 reviews
+[331/360] Cocoon Day Spa San Francisco - Soma... ✅ 475 reviews
+[332/360] Bamford Wellness Spa... ✅ 19 reviews
+[333/360] Pure Organic Spa... ✅ 35 reviews
+[334/360] Alchemy Springs & Sauna Garden... ✅ 62 reviews
+[335/360] Cavallo Point Healing Arts Center & Spa... ✅ 135 reviews
+[336/360] Royal Thai Spa... ✅ 389 reviews
+[337/360] Redmint - TCM Holistic Wellness... ✅ 265 reviews
+[338/360] Zen Spa... ✅ 45 reviews
+[339/360] Earthbody - Massage San Francisco... ✅ 194 reviews
+[340/360] Spa J'Adore... ✅ 252 reviews
+[341/360] CODE Salon... ✅ 871 reviews
+[342/360] Hairglim... ✅ 214 reviews
+[343/360] The Lane Salon... ✅ 412 reviews
+[344/360] Blake Charles Salon... ✅ 1105 reviews
+[345/360] Kinship Salon & Barber... ✅ 248 reviews
+[346/360] bliss organic salon... ✅ 65 reviews
+[347/360] Arthur Sebastian Hair Salon... ✅ 283 reviews
+[348/360] May's Hair Design... ✅ 175 reviews
+[349/360] The Heart Salon... ✅ 41 reviews
+[350/360] Color Block Salon... ✅ 62 reviews
+  [saved 350/360]
+[351/360] Maisonry Salon... ✅ 84 reviews
+[352/360] Little Sparrow salon & barber... ✅ 111 reviews
+[353/360] Yo Yo Salon... ✅ 111 reviews
+[354/360] Z Touch Salon... ✅ 183 reviews
+[355/360] Headprint Studio... ✅ 169 reviews
+[356/360] Honeycomb Salon... ✅ 225 reviews
+[357/360] Edo Salon... ✅ 174 reviews
+[358/360] PATRICK EVAN SALON... ✅ 374 reviews
+[359/360] B Parlor... ✅ 174 reviews
+[360/360] Steel + Lacquer... ✅ 221 reviews
+
+✅ Done! Fixed 359 of 360
+Botanical Garden: 7889 reviews

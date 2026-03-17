@@ -1,0 +1,111 @@
+# LocallySF - San Francisco Local Directory
+
+LocallySF is a comprehensive local directory for San Francisco and the Bay Area. We help people discover the best restaurants, cafes, bars, shopping, attractions, and services in the city.
+
+## About LocallySF
+
+LocallySF is "The Yellow Pages of Humanity" - a modern take on local business discovery that goes beyond simple listings. We provide:
+
+- Real photos from actual visitors
+- Authentic Google reviews and ratings  
+- Detailed business information (hours, contact, location)
+- Neighborhood-based browsing
+- Category-specific discovery
+
+## Coverage Areas
+
+**Primary Coverage:**
+- San Francisco, CA
+- Oakland, CA  
+- South San Francisco, CA
+- Daly City, CA
+
+**Neighborhoods in San Francisco:**
+- Mission District
+- Chinatown
+- North Beach
+- Castro
+- Marina District
+- Hayes Valley
+- SoMa (South of Market)
+- Haight-Ashbury
+- Pacific Heights
+- Richmond District
+- Sunset District
+- Financial District
+- Union Square
+- Nob Hill
+- Russian Hill
+
+## Categories
+
+**🍽️ Restaurants & Dining**
+- Fine dining establishments
+- Casual dining
+- Ethnic cuisines (Chinese, Mexican, Italian, Japanese, etc.)
+- Brunch spots
+- Fast food and quick service
+
+**☕ Cafes & Coffee**
+- Coffee shops
+- Tea houses
+- Bakeries with cafe seating
+- Co-working cafes
+
+**🍸 Bars & Nightlife**
+- Cocktail bars
+- Wine bars
+- Breweries
+- Sports bars
+- Dance clubs
+- Live music venues
+
+**🛍️ Shopping & Retail**
+- Boutique stores
+- Vintage shops
+- Department stores
+- Specialty retailers
+- Art galleries
+- Bookstores
+
+**🎭 Attractions & Entertainment**
+- Museums
+- Parks and recreation
+- Tourist attractions
+- Theaters
+- Movie theaters
+- Art installations
+
+**💆 Services & Wellness**
+- Spas and wellness centers
+- Fitness gyms
+- Hair salons and barbershops
+- Beauty services
+- Massage therapy
+- Healthcare services
+
+## Data Sources
+
+All business information is sourced from Google Places API, ensuring:
+- Accurate contact information
+- Current business hours
+- Real customer reviews
+- Authentic photos
+- Up-to-date ratings
+
+## Website Structure
+
+- Homepage: Featured places, category browsing, neighborhood exploration
+- Category pages: Browse all businesses within a specific category
+- Place detail pages: Complete information about individual businesses
+- Neighborhood pages: Discover places within specific SF neighborhoods
+- About page: Learn about LocallySF's mission and coverage
+
+## Contact
+
+For business listings, corrections, or general inquiries:
+- Website: https://locallysf.com
+- Add a business: https://locallysf.com/add-business
+- Email: hello@locallysf.com
+
+LocallySF is committed to supporting local businesses and helping residents and visitors discover the best of what San Francisco has to offer.
