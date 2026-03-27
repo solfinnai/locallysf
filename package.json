@@ -17,6 +17,7 @@
     "lighthouse": "lhci autorun"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.19",
     "@tiptap/extension-placeholder": "^3.20.5",
     "@tiptap/react": "^3.20.5",
     "@tiptap/starter-kit": "^3.20.5",

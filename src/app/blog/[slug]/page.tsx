@@ -50,12 +50,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   };
 
   return (
-    <div className="bg-background min-h-screen">
+    <div className="min-h-screen" style={{ backgroundColor: '#FAF7F2' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <Navigation variant="dark" />
 
-      <div className="relative h-[400px] overflow-hidden">
+      <header className="relative h-[450px] overflow-hidden">
         <Image
           src={post.coverImage}
           alt={post.title}
@@ -64,55 +64,74 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-primary/80" />
-        <div className="absolute bottom-10 left-0 right-0 px-6">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/40 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 px-6 pb-12">
           <div className="max-w-3xl mx-auto">
-            <div className="flex gap-3 mb-3">
-              <span className="bg-accent text-primary px-4 py-1.5 rounded-full text-sm font-semibold">{post.neighborhood}</span>
-              <span className="bg-white/15 text-white px-4 py-1.5 rounded-full text-sm">{post.readTime}</span>
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              <span className="bg-[#E8A838] text-[#0A1628] px-4 py-1.5 rounded-full text-sm font-semibold">
+                {post.neighborhood}
+              </span>
+              <span className="bg-white/20 backdrop-blur text-white px-4 py-1.5 rounded-full text-sm">
+                {post.readTime}
+              </span>
+              <span className="text-white/70 text-sm">
+                {new Date(post.publishedAt).toLocaleDateString('en-US', { 
+                  month: 'long', 
+                  day: 'numeric', 
+                  year: 'numeric' 
+                })}
+              </span>
             </div>
-            <h1 className="font-display text-white text-4xl md:text-5xl leading-tight">{post.title}</h1>
+            <h1 className="font-serif text-white text-3xl md:text-4xl lg:text-5xl leading-tight">
+              {post.title}
+            </h1>
           </div>
         </div>
-      </div>
+      </header>
 
-      <div className="max-w-3xl mx-auto px-6 py-12">
-        <div className="flex gap-2 mb-8 text-sm text-text-muted">
-          <Link href="/blog" className="text-accent hover:underline">Blog</Link>
-          <span>/</span>
-          <span>{post.neighborhood}</span>
+      <main className="max-w-3xl mx-auto px-6 py-12">
+        <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
+          <p className="text-xl text-gray-600 leading-relaxed mb-8 pb-8 border-b border-gray-200">
+            {post.excerpt}
+          </p>
+
+          <div 
+            className="article-content"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
         </div>
 
-        <article
-          className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
-
-        <div className="mt-16 pt-8 border-t-2 border-accent">
-          <h2 className="font-display text-primary text-3xl mb-6">More Neighborhood Guides</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="mt-16 pt-12 border-t-2 border-[#E8A838]">
+          <h2 className="font-serif text-[#0A1628] text-2xl md:text-3xl mb-8">
+            More Neighborhood Guides
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {relatedPosts.map((rp) => (
-              <Link key={rp.slug} href={`/blog/${rp.slug}`} className="block">
-                <div className="bg-white rounded-xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow">
-                  <div className="relative h-36">
+              <Link key={rp.slug} href={`/blog/${rp.slug}`} className="block group">
+                <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                  <div className="relative h-44 overflow-hidden">
                     <Image
                       src={rp.coverImage}
                       alt={rp.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <div className="p-4">
-                    <span className="text-accent text-xs font-semibold">{rp.neighborhood}</span>
-                    <h3 className="font-display text-primary text-base mt-1 leading-snug">{rp.title}</h3>
+                  <div className="p-5">
+                    <span className="text-[#E8A838] text-xs font-bold uppercase tracking-wide">
+                      {rp.neighborhood}
+                    </span>
+                    <h3 className="font-serif text-[#0A1628] text-base mt-2 leading-snug group-hover:text-[#E8A838] transition-colors">
+                      {rp.title}
+                    </h3>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
         </div>
-      </div>
+      </main>
 
       <Footer variant="dark" />
     </div>

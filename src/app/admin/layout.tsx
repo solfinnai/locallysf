@@ -22,7 +22,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
               <div className="flex items-center gap-3">
-                <Link href="/admin" className="flex items-center gap-2">
+                <Link href="/" className="flex items-center gap-2">
                   <span className="text-2xl font-bold text-primary font-display">
                     Locally<span className="text-accent">SF</span>
                   </span>
