@@ -401,7 +401,7 @@ export const blogPosts: BlogPost[] = [
     neighborhood: "Castro",
     publishedAt: "2026-03-11",
     readTime: "8 min read",
-    coverImage: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=80",
+    coverImage: "https://images.unsplash.com/photo-1578269174936-2709b46aae5e?w=1200&q=80",
     content: `
       <h2>The Heart of LGBTQ+ San Francisco</h2>
       
