@@ -24,12 +24,12 @@ function FilterButton({
     <button
       type="button"
       onClick={onClick}
-      className={`px-4 py-1.5 rounded-full text-sm transition-all ${
+      className={`px-4 py-1.5 rounded-full text-sm transition-all whitespace-nowrap ${
         active
           ? dark
-            ? 'bg-accent text-primary font-semibold'
-            : 'bg-primary text-white font-semibold'
-          : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
+            ? 'bg-[#E8A838] text-[#0A1628] font-semibold'
+            : 'bg-[#0A1628] text-white font-semibold'
+          : 'bg-white text-gray-600 hover:bg-gray-100 shadow-sm border border-gray-200'
       }`}
     >
       {children}
@@ -51,44 +51,66 @@ export default function BlogGrid({ posts }: BlogGridProps) {
   });
 
   return (
-    <>
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className="flex flex-wrap gap-2 mb-3 -mt-16 relative z-10">
-          <span className="text-gray-500 text-sm self-center mr-1">Neighborhood:</span>
-          {neighborhoods.map(n => (
-            <FilterButton
-              key={n}
-              active={activeNeighborhood === n}
-              onClick={() => setActiveNeighborhood(n)}
-            >
-              {n === 'all' ? 'All' : n}
-            </FilterButton>
-          ))}
+    <div className="bg-[#FAF7F2]">
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
+          <div className="mb-4">
+            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 block">
+              Neighborhood
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {neighborhoods.map(n => (
+                <FilterButton
+                  key={n}
+                  active={activeNeighborhood === n}
+                  onClick={() => setActiveNeighborhood(n)}
+                >
+                  {n === 'all' ? 'All Neighborhoods' : n}
+                </FilterButton>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 block">
+              Category
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {categories.map(c => (
+                <FilterButton
+                  key={c}
+                  active={activeCategory === c}
+                  onClick={() => setActiveCategory(c)}
+                  dark
+                >
+                  {c === 'all' ? 'All Categories' : c.charAt(0).toUpperCase() + c.slice(1)}
+                </FilterButton>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-6">
-          <span className="text-gray-500 text-sm self-center mr-1">Category:</span>
-          {categories.map(c => (
-            <FilterButton
-              key={c}
-              active={activeCategory === c}
-              onClick={() => setActiveCategory(c)}
-              dark
-            >
-              {c === 'all' ? 'All Topics' : c}
-            </FilterButton>
-          ))}
+        <div className="mb-6">
+          <p className="text-gray-600 text-sm">
+            Showing {filteredPosts.length} {filteredPosts.length === 1 ? 'guide' : 'guides'}
+            {activeNeighborhood !== 'all' || activeCategory !== 'all' ? (
+              <button
+                onClick={() => { setActiveNeighborhood('all'); setActiveCategory('all'); }}
+                className="ml-2 text-[#E8A838] hover:underline font-medium"
+              >
+                Clear filters
+              </button>
+            ) : null}
+          </p>
         </div>
-      </div>
 
-      <div className="max-w-[1200px] mx-auto px-6 pb-20 relative z-0">
         {filteredPosts.length === 0 ? (
-          <div className="text-center py-16">
-            <p className="text-gray-500 text-lg">No guides found for this filter combination.</p>
+          <div className="text-center py-16 bg-white rounded-xl shadow-sm">
+            <p className="text-gray-500 text-lg mb-4">No guides found for this filter combination.</p>
             <button
               type="button"
               onClick={() => { setActiveNeighborhood('all'); setActiveCategory('all'); }}
-              className="mt-4 px-6 py-2.5 bg-accent text-primary font-semibold rounded-lg hover:bg-accent/90 transition-colors"
+              className="px-6 py-2.5 bg-[#E8A838] text-[#0A1628] font-semibold rounded-lg hover:bg-[#E8A838]/90 transition-colors"
             >
               Clear Filters
             </button>
@@ -97,8 +119,8 @@ export default function BlogGrid({ posts }: BlogGridProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPosts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="block no-underline">
-                <article className="bg-white rounded-xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow h-full">
-                  <div className="relative h-56 overflow-hidden">
+                <article className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                  <div className="relative h-48 overflow-hidden">
                     <Image
                       src={post.coverImage}
                       alt={post.title}
@@ -106,27 +128,24 @@ export default function BlogGrid({ posts }: BlogGridProps) {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover"
                     />
-                    <div className="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full text-xs font-semibold">
+                    <div className="absolute top-3 left-3 bg-[#E8A838] text-[#0A1628] px-3 py-1 rounded-full text-xs font-bold">
                       {post.neighborhood}
                     </div>
-                    <div className="absolute top-3 right-3 bg-primary/70 text-white px-3 py-1 rounded-full text-xs capitalize">
-                      {post.category}
-                    </div>
                   </div>
-                  <div className="p-5">
-                    <div className="flex gap-3 mb-2 text-sm text-gray-500">
-                      <span>{post.publishedAt}</span>
+                  <div className="p-5 flex-1 flex flex-col">
+                    <div className="flex items-center gap-2 mb-2 text-xs text-gray-500">
+                      <span className="capitalize">{post.category}</span>
                       <span>·</span>
                       <span>{post.readTime}</span>
                     </div>
-                    <h2 className="font-display text-primary text-xl mb-2 leading-snug">
+                    <h2 className="font-serif text-[#0A1628] text-lg mb-2 leading-snug flex-1">
                       {post.title}
                     </h2>
-                    <p className="text-gray-500 text-sm leading-relaxed line-clamp-3">
+                    <p className="text-gray-500 text-sm leading-relaxed line-clamp-2">
                       {post.excerpt}
                     </p>
-                    <div className="mt-4 text-accent text-sm font-semibold">
-                      Read Guide →
+                    <div className="mt-4 text-[#E8A838] text-sm font-semibold flex items-center gap-1">
+                      Read Guide <span>→</span>
                     </div>
                   </div>
                 </article>
@@ -135,6 +154,6 @@ export default function BlogGrid({ posts }: BlogGridProps) {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
