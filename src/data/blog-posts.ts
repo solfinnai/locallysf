@@ -7,7 +7,7 @@ export interface BlogPost {
   neighborhood: string;
   publishedAt: string;
   readTime: string;
-  coverImage: string; // Unsplash URL
+  coverImage: string; // picsum.photos URL (always works)
 }
 
 export const blogPosts: BlogPost[] = [
@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
     neighborhood: "Mission District",
     publishedAt: "2026-03-15",
     readTime: "8 min read",
-    coverImage: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
+    coverImage: "https://picsum.photos/seed/mission-sf/1200/800",
     content: `
       <h2>Why the Mission District Is SF's Food Capital</h2>
       
@@ -101,7 +101,7 @@ export const blogPosts: BlogPost[] = [
     neighborhood: "Hayes Valley",
     publishedAt: "2026-03-14",
     readTime: "6 min read",
-    coverImage: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=80",
+    coverImage: "https://picsum.photos/seed/hayesvalley-sf/1200/800",
     content: `
       <h2>Hayes Valley: San Francisco's Coffee Renaissance</h2>
       
@@ -183,7 +183,7 @@ export const blogPosts: BlogPost[] = [
     neighborhood: "North Beach",
     publishedAt: "2026-03-13",
     readTime: "9 min read",
-    coverImage: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80",
+    coverImage: "https://picsum.photos/seed/northbeach-sf/1200/800",
     content: `
       <h2>Welcome to San Francisco's Little Italy</h2>
       
@@ -294,7 +294,7 @@ export const blogPosts: BlogPost[] = [
     neighborhood: "Chinatown",
     publishedAt: "2026-03-12",
     readTime: "7 min read",
-    coverImage: "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=1200&q=80",
+    coverImage: "https://picsum.photos/seed/chinatown-sf/1200/800",
     content: `
       <h2>Beyond the Dragon Gate: Authentic Chinatown</h2>
       
@@ -401,7 +401,7 @@ export const blogPosts: BlogPost[] = [
     neighborhood: "Castro",
     publishedAt: "2026-03-11",
     readTime: "8 min read",
-    coverImage: "https://images.unsplash.com/photo-1578269174936-2709b46aae5e?w=1200&q=80",
+    coverImage: "https://picsum.photos/seed/castro-sf/1200/800",
     content: `
       <h2>The Heart of LGBTQ+ San Francisco</h2>
       
@@ -524,7 +524,7 @@ export const blogPosts: BlogPost[] = [
     neighborhood: "Marina",
     publishedAt: "2026-03-10",
     readTime: "7 min read",
-    coverImage: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=1200&q=80",
+    coverImage: "https://picsum.photos/seed/marina-sf/1200/800",
     content: `
       <h2>San Francisco's Playground by the Bay</h2>
       
@@ -639,7 +639,7 @@ export const blogPosts: BlogPost[] = [
     neighborhood: "Union Square",
     publishedAt: "2026-03-09",
     readTime: "8 min read",
-    coverImage: "https://images.unsplash.com/photo-1601597111158-2fce01e0a3b2?w=1200&q=80",
+    coverImage: "https://picsum.photos/seed/unionsquare-sf/1200/800",
     content: `
       <h2>San Francisco's Premier Shopping Destination</h2>
       
@@ -705,7 +705,7 @@ export const blogPosts: BlogPost[] = [
     neighborhood: "Golden Gate Park",
     publishedAt: "2026-03-08",
     readTime: "9 min read",
-    coverImage: "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1200&q=80",
+    coverImage: "https://picsum.photos/seed/goldengatepark-sf/1200/800",
     content: `
       <h2>San Francisco's Urban Oasis</h2>
       
