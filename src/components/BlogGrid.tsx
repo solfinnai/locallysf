@@ -2,17 +2,45 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { BlogPost } from '@/data/blog-posts';
 
 interface BlogGridProps {
   posts: BlogPost[];
 }
 
+function FilterButton({
+  active,
+  onClick,
+  children,
+  dark = false,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+  dark?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`px-4 py-1.5 rounded-full text-sm transition-all ${
+        active
+          ? dark
+            ? 'bg-accent text-primary font-semibold'
+            : 'bg-primary text-white font-semibold'
+          : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
+      }`}
+    >
+      {children}
+    </button>
+  );
+}
+
 export default function BlogGrid({ posts }: BlogGridProps) {
   const [activeNeighborhood, setActiveNeighborhood] = useState('all');
   const [activeCategory, setActiveCategory] = useState('all');
 
-  // Extract unique neighborhoods and categories from blog posts
   const neighborhoods = ['all', ...Array.from(new Set(posts.map(p => p.neighborhood)))];
   const categories = ['all', ...Array.from(new Set(posts.map(p => p.category)))];
 
@@ -24,138 +52,80 @@ export default function BlogGrid({ posts }: BlogGridProps) {
 
   return (
     <>
-      {/* Filter pills */}
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
-        {/* Neighborhood filters */}
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 12, marginTop: -20, position: 'relative', zIndex: 2 }}>
-          <span style={{ color: '#6b7280', fontSize: '0.8rem', fontFamily: 'Inter, sans-serif', alignSelf: 'center', marginRight: 4 }}>Neighborhood:</span>
+      <div className="max-w-[1200px] mx-auto px-6">
+        <div className="flex flex-wrap gap-2 mb-3 -mt-16 relative z-10">
+          <span className="text-gray-500 text-sm self-center mr-1">Neighborhood:</span>
           {neighborhoods.map(n => (
-            <button
+            <FilterButton
               key={n}
-              type="button"
+              active={activeNeighborhood === n}
               onClick={() => setActiveNeighborhood(n)}
-              style={{
-                padding: '6px 14px',
-                borderRadius: 20,
-                border: 'none',
-                fontSize: '0.8rem',
-                fontWeight: activeNeighborhood === n ? 600 : 400,
-                background: activeNeighborhood === n ? '#E8A838' : '#fff',
-                color: activeNeighborhood === n ? '#0A1628' : '#6b7280',
-                cursor: 'pointer',
-                fontFamily: 'Inter, sans-serif',
-                boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
-                transition: 'all 0.2s',
-              }}
             >
               {n === 'all' ? 'All' : n}
-            </button>
+            </FilterButton>
           ))}
         </div>
 
-        {/* Category filters */}
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 24 }}>
-          <span style={{ color: '#6b7280', fontSize: '0.8rem', fontFamily: 'Inter, sans-serif', alignSelf: 'center', marginRight: 4 }}>Category:</span>
+        <div className="flex flex-wrap gap-2 mb-6">
+          <span className="text-gray-500 text-sm self-center mr-1">Category:</span>
           {categories.map(c => (
-            <button
+            <FilterButton
               key={c}
-              type="button"
+              active={activeCategory === c}
               onClick={() => setActiveCategory(c)}
-              style={{
-                padding: '6px 14px',
-                borderRadius: 20,
-                border: 'none',
-                fontSize: '0.8rem',
-                fontWeight: activeCategory === c ? 600 : 400,
-                background: activeCategory === c ? '#0A1628' : '#fff',
-                color: activeCategory === c ? '#fff' : '#6b7280',
-                cursor: 'pointer',
-                fontFamily: 'Inter, sans-serif',
-                boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
-                transition: 'all 0.2s',
-                textTransform: 'capitalize',
-              }}
+              dark
             >
               {c === 'all' ? 'All Topics' : c}
-            </button>
+            </FilterButton>
           ))}
         </div>
       </div>
 
-      {/* Blog Grid */}
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px 80px', position: 'relative', zIndex: 1 }}>
+      <div className="max-w-[1200px] mx-auto px-6 pb-20 relative z-0">
         {filteredPosts.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '60px 0' }}>
-            <p style={{ color: '#6b7280', fontSize: '1.1rem', fontFamily: 'Inter, sans-serif' }}>
-              No guides found for this filter combination.
-            </p>
+          <div className="text-center py-16">
+            <p className="text-gray-500 text-lg">No guides found for this filter combination.</p>
             <button
               type="button"
               onClick={() => { setActiveNeighborhood('all'); setActiveCategory('all'); }}
-              style={{
-                marginTop: 16,
-                padding: '10px 24px',
-                background: '#E8A838',
-                color: '#0A1628',
-                border: 'none',
-                borderRadius: 8,
-                fontWeight: 600,
-                fontSize: '0.9rem',
-                cursor: 'pointer',
-              }}
+              className="mt-4 px-6 py-2.5 bg-accent text-primary font-semibold rounded-lg hover:bg-accent/90 transition-colors"
             >
               Clear Filters
             </button>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 24 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPosts.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`} style={{ textDecoration: 'none' }}>
-                <article style={{
-                  background: '#fff',
-                  borderRadius: 12,
-                  overflow: 'hidden',
-                  boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-                  transition: 'transform 0.2s, box-shadow 0.2s',
-                  height: '100%',
-                }}>
-                  <div style={{ position: 'relative', height: 220, overflow: 'hidden' }}>
-                    <img
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="block no-underline">
+                <article className="bg-white rounded-xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow h-full">
+                  <div className="relative h-56 overflow-hidden">
+                    <Image
                       src={post.coverImage}
                       alt={post.title}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover"
                     />
-                    <div style={{
-                      position: 'absolute', top: 12, left: 12,
-                      background: '#E8A838', color: '#0A1628',
-                      padding: '4px 12px', borderRadius: 20,
-                      fontSize: '0.75rem', fontWeight: 600, fontFamily: 'Inter, sans-serif',
-                    }}>
+                    <div className="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full text-xs font-semibold">
                       {post.neighborhood}
                     </div>
-                    <div style={{
-                      position: 'absolute', top: 12, right: 12,
-                      background: 'rgba(10,22,40,0.7)', color: '#fff',
-                      padding: '4px 10px', borderRadius: 20,
-                      fontSize: '0.7rem', fontFamily: 'Inter, sans-serif',
-                      textTransform: 'capitalize',
-                    }}>
+                    <div className="absolute top-3 right-3 bg-primary/70 text-white px-3 py-1 rounded-full text-xs capitalize">
                       {post.category}
                     </div>
                   </div>
-                  <div style={{ padding: '20px 24px 24px' }}>
-                    <div style={{ display: 'flex', gap: 12, marginBottom: 8, fontSize: '0.78rem', color: '#6b7280', fontFamily: 'Inter, sans-serif' }}>
+                  <div className="p-5">
+                    <div className="flex gap-3 mb-2 text-sm text-gray-500">
                       <span>{post.publishedAt}</span>
                       <span>·</span>
                       <span>{post.readTime}</span>
                     </div>
-                    <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.3rem', color: '#0A1628', marginBottom: 8, lineHeight: 1.3 }}>
+                    <h2 className="font-display text-primary text-xl mb-2 leading-snug">
                       {post.title}
                     </h2>
-                    <p style={{ color: '#6b7280', fontSize: '0.9rem', lineHeight: 1.6, fontFamily: 'Inter, sans-serif' }}>
+                    <p className="text-gray-500 text-sm leading-relaxed line-clamp-3">
                       {post.excerpt}
                     </p>
-                    <div style={{ marginTop: 16, color: '#E8A838', fontSize: '0.85rem', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
+                    <div className="mt-4 text-accent text-sm font-semibold">
                       Read Guide →
                     </div>
                   </div>

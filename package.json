@@ -12,7 +12,9 @@
     "update-data": "npm run fetch-data && npm run convert-data",
     "enrich-data": "node scripts/enrich-places.mjs",
     "enrich-dry-run": "node scripts/enrich-places.mjs --dry-run",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "echo 'No tests configured yet'",
+    "lighthouse": "lhci autorun"
   },
   "dependencies": {
     "next": "16.1.6",
@@ -20,6 +22,7 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.14.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

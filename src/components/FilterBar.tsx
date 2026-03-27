@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 
 const CATEGORIES = [
@@ -64,80 +64,128 @@ interface DropdownProps {
   options: { key: string; label: string }[];
   onSelect: (key: string) => void;
   dark?: boolean;
+  id?: string;
 }
 
-function Dropdown({ label, value, options, onSelect, dark }: DropdownProps) {
-  const [open, setOpen] = useState(false);
+function Dropdown({ label, value, options, onSelect, dark = false, id }: DropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [focusedIndex, setFocusedIndex] = useState(-1);
   const ref = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      switch (e.key) {
+        case 'Enter':
+        case ' ':
+          e.preventDefault();
+          if (isOpen && focusedIndex >= 0) {
+            onSelect(options[focusedIndex].key);
+            setIsOpen(false);
+          } else {
+            setIsOpen(!isOpen);
+          }
+          break;
+        case 'ArrowDown':
+          e.preventDefault();
+          if (!isOpen) {
+            setIsOpen(true);
+            setFocusedIndex(0);
+          } else {
+            setFocusedIndex((prev) => Math.min(prev + 1, options.length - 1));
+          }
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          if (isOpen) {
+            setFocusedIndex((prev) => Math.max(prev - 1, 0));
+          }
+          break;
+        case 'Escape':
+          e.preventDefault();
+          setIsOpen(false);
+          break;
+        case 'Home':
+          e.preventDefault();
+          if (isOpen) {
+            setFocusedIndex(0);
+          }
+          break;
+        case 'End':
+          e.preventDefault();
+          if (isOpen) {
+            setFocusedIndex(options.length - 1);
+          }
+          break;
+      }
+    },
+    [isOpen, focusedIndex, onSelect, options]
+  );
 
   useEffect(() => {
-    function handler(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    }
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (isOpen && listRef.current && focusedIndex >= 0) {
+      const focusedElement = listRef.current.children[focusedIndex] as HTMLElement;
+      focusedElement?.scrollIntoView({ block: 'nearest' });
+    }
+  }, [focusedIndex, isOpen]);
+
   return (
-    <div ref={ref} style={{ position: 'relative' }}>
+    <div ref={ref} className="relative">
       <button
         type="button"
-        onClick={() => setOpen(!open)}
-        style={{
-          display: 'block',
-          width: '100%',
-          padding: '12px 16px',
-          textAlign: 'left',
-          background: 'transparent',
-          border: 'none',
-          cursor: 'pointer',
-        }}
+        id={id}
+        onClick={() => setIsOpen(!isOpen)}
+        onKeyDown={handleKeyDown}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        className="block w-full text-left focus:outline-none focus:ring-2 focus:ring-accent rounded-lg"
       >
-        <p style={{ fontSize: 11, fontWeight: 600, marginBottom: 2, color: dark ? 'rgba(255,255,255,0.5)' : '#999' }}>
+        <p className={`text-[11px] font-semibold mb-0.5 ${dark ? 'text-white/50' : 'text-gray-500'}`}>
           {label}
         </p>
-        <p style={{ fontSize: 13, display: 'flex', alignItems: 'center', gap: 4, color: dark ? '#fff' : '#333' }}>
-          {value} <span style={{ fontSize: 10 }}>▾</span>
+        <p className={`text-sm flex items-center gap-1 ${dark ? 'text-white' : 'text-gray-800'}`}>
+          {value}
+          <span className="text-xs">▾</span>
         </p>
       </button>
 
-      {open && (
-        <div style={{
-          position: 'absolute',
-          top: '100%',
-          left: 0,
-          marginTop: 4,
-          background: '#fff',
-          borderRadius: 12,
-          boxShadow: '0 10px 40px rgba(0,0,0,0.15)',
-          border: '1px solid #e5e5e5',
-          zIndex: 9999,
-          minWidth: 200,
-          maxHeight: 320,
-          overflowY: 'auto',
-          WebkitOverflowScrolling: 'touch',
-        }}>
-          <div style={{ padding: 4 }}>
-            {options.map(opt => (
+      {isOpen && (
+        <div
+          ref={listRef}
+          role="listbox"
+          aria-label={label}
+          className="absolute top-full left-0 mt-1 bg-white rounded-xl shadow-lg border border-gray-100 z-50 min-w-[200px] max-h-80 overflow-y-auto"
+        >
+          <div className="py-1">
+            {options.map((option, index) => (
               <button
-                key={opt.key}
+                key={option.key}
                 type="button"
-                onClick={() => { onSelect(opt.key); setOpen(false); }}
-                style={{
-                  display: 'block',
-                  width: '100%',
-                  textAlign: 'left',
-                  padding: '10px 14px',
-                  fontSize: 14,
-                  border: 'none',
-                  background: opt.label === value ? '#FFF7ED' : 'transparent',
-                  color: opt.label === value ? '#E8A838' : '#333',
-                  fontWeight: opt.label === value ? 600 : 400,
-                  cursor: 'pointer',
-                  borderRadius: 8,
+                role="option"
+                aria-selected={option.label === value}
+                onClick={() => {
+                  onSelect(option.key);
+                  setIsOpen(false);
                 }}
+                className={`w-full text-left px-4 py-2.5 text-sm transition-colors focus:outline-none ${
+                  option.label === value
+                    ? 'bg-accent/10 text-accent font-semibold'
+                    : 'text-gray-700 hover:bg-gray-50'
+                } ${focusedIndex === index ? 'bg-gray-50' : ''}`}
+                onMouseEnter={() => setFocusedIndex(index)}
               >
-                {opt.label}
+                {option.label}
               </button>
             ))}
           </div>
@@ -147,55 +195,78 @@ function Dropdown({ label, value, options, onSelect, dark }: DropdownProps) {
   );
 }
 
-export function HeroFilterBar() {
+interface FilterState {
+  category: string;
+  neighborhood: string;
+  price: string;
+  rating: string;
+}
+
+interface FilterBarProps {
+  onFilter?: (filters: FilterState) => void;
+  variant?: 'hero' | 'section';
+}
+
+export function HeroFilterBar({ onFilter }: FilterBarProps) {
   const router = useRouter();
   const [category, setCategory] = useState('all');
   const [neighborhood, setNeighborhood] = useState('all');
 
-  const catLabel = CATEGORIES.find(c => c.key === category)?.label || 'All Categories';
-  const neighLabel = NEIGHBORHOODS.find(n => n.key === neighborhood)?.label || 'Everywhere';
+  const catLabel = CATEGORIES.find((c) => c.key === category)?.label || 'All Categories';
+  const neighLabel = NEIGHBORHOODS.find((n) => n.key === neighborhood)?.label || 'Everywhere';
 
   const handleExplore = () => {
-    const cat = category !== 'all' ? category : 'restaurants';
-    const params = new URLSearchParams();
-    if (neighborhood !== 'all') params.set('neighborhood', neighborhood);
-    const qs = params.toString();
-    router.push(`/${cat}${qs ? `?${qs}` : ''}`);
+    if (onFilter) {
+      onFilter({ category, neighborhood, price: 'all', rating: 'all' });
+    } else {
+      const cat = category !== 'all' ? category : 'restaurants';
+      const params = new URLSearchParams();
+      if (neighborhood !== 'all') params.set('neighborhood', neighborhood);
+      const qs = params.toString();
+      router.push(`/${cat}${qs ? `?${qs}` : ''}`);
+    }
   };
 
   return (
-    <div style={{
-      background: 'rgba(20,20,20,0.85)',
-      backdropFilter: 'blur(12px)',
-      borderRadius: '12px 12px 0 0',
-      overflow: 'visible',
-      position: 'relative',
-      zIndex: 100,
-    }}>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, 1fr) auto',
-        alignItems: 'stretch',
-      }}>
-        <div style={{ borderRight: '1px solid rgba(255,255,255,0.1)' }}>
-          <Dropdown label="Category" value={catLabel} options={CATEGORIES} onSelect={setCategory} dark />
+    <div className="bg-black/85 backdrop-blur-xl rounded-xl overflow-visible relative z-10">
+      <div className="grid grid-cols-2 md:grid-cols-3">
+        <div className="border-r border-white/10">
+          <div className="p-3">
+            <Dropdown
+              label="Category"
+              value={catLabel}
+              options={CATEGORIES}
+              onSelect={setCategory}
+              dark
+            />
+          </div>
         </div>
-        <div style={{ borderRight: '1px solid rgba(255,255,255,0.1)' }}>
-          <Dropdown label="Neighborhood" value={neighLabel} options={NEIGHBORHOODS} onSelect={setNeighborhood} dark />
+        <div className="border-r border-white/10">
+          <div className="p-3">
+            <Dropdown
+              label="Neighborhood"
+              value={neighLabel}
+              options={NEIGHBORHOODS}
+              onSelect={setNeighborhood}
+              dark
+            />
+          </div>
         </div>
+        <div className="hidden md:block">
+          <button
+            onClick={handleExplore}
+            type="button"
+            className="w-full h-full px-6 py-3 bg-white text-gray-900 font-semibold text-sm hover:bg-gray-100 transition-colors rounded-tr-xl"
+          >
+            Explore →
+          </button>
+        </div>
+      </div>
+      <div className="md:hidden p-2">
         <button
           onClick={handleExplore}
           type="button"
-          style={{
-            padding: '12px 28px',
-            background: '#fff',
-            color: '#1A1A1A',
-            fontSize: 14,
-            fontWeight: 600,
-            border: 'none',
-            cursor: 'pointer',
-            borderRadius: '0 12px 0 0',
-          }}
+          className="w-full py-3 bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-colors rounded-lg"
         >
           Explore →
         </button>
@@ -204,17 +275,17 @@ export function HeroFilterBar() {
   );
 }
 
-export function SectionFilterBar({ onFilter }: { onFilter?: (filters: { category: string; neighborhood: string; price: string; rating: string }) => void } = {}) {
+export function SectionFilterBar({ onFilter }: FilterBarProps) {
   const router = useRouter();
   const [category, setCategory] = useState('all');
   const [neighborhood, setNeighborhood] = useState('all');
   const [price, setPrice] = useState('all');
   const [rating, setRating] = useState('all');
 
-  const catLabel = CATEGORIES.find(c => c.key === category)?.label || 'All Categories';
-  const neighLabel = NEIGHBORHOODS.find(n => n.key === neighborhood)?.label || 'Everywhere';
-  const priceLabel = PRICES.find(p => p.key === price)?.label || 'No Limit';
-  const ratingLabel = RATINGS.find(r => r.key === rating)?.label || 'Any Rating';
+  const catLabel = CATEGORIES.find((c) => c.key === category)?.label || 'All Categories';
+  const neighLabel = NEIGHBORHOODS.find((n) => n.key === neighborhood)?.label || 'Everywhere';
+  const priceLabel = PRICES.find((p) => p.key === price)?.label || 'No Limit';
+  const ratingLabel = RATINGS.find((r) => r.key === rating)?.label || 'Any Rating';
 
   const handleDiscover = () => {
     if (onFilter) {
@@ -231,48 +302,42 @@ export function SectionFilterBar({ onFilter }: { onFilter?: (filters: { category
   };
 
   return (
-    <div style={{
-      background: '#fff',
-      borderRadius: 12,
-      border: '1px solid #e5e5e5',
-      marginBottom: 32,
-      overflow: 'visible',
-      position: 'relative',
-      zIndex: 50,
-    }}>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr) auto',
-        alignItems: 'stretch',
-      }}>
-        <div style={{ borderRight: '1px solid #e5e5e5' }}>
-          <Dropdown label="Neighborhood" value={neighLabel} options={NEIGHBORHOODS} onSelect={setNeighborhood} />
+    <div className="bg-white rounded-xl border border-gray-100 overflow-visible mb-8 shadow-sm">
+      <div className="grid grid-cols-2 lg:grid-cols-5">
+        <div className="border-r border-gray-100">
+          <div className="p-3">
+            <Dropdown
+              label="Neighborhood"
+              value={neighLabel}
+              options={NEIGHBORHOODS}
+              onSelect={setNeighborhood}
+            />
+          </div>
         </div>
-        <div style={{ borderRight: '1px solid #e5e5e5' }}>
-          <Dropdown label="Category" value={catLabel} options={CATEGORIES} onSelect={setCategory} />
+        <div className="border-r border-gray-100">
+          <div className="p-3">
+            <Dropdown label="Category" value={catLabel} options={CATEGORIES} onSelect={setCategory} />
+          </div>
         </div>
-        <div style={{ borderRight: '1px solid #e5e5e5' }}>
-          <Dropdown label="Price" value={priceLabel} options={PRICES} onSelect={setPrice} />
+        <div className="border-r border-gray-100">
+          <div className="p-3">
+            <Dropdown label="Price" value={priceLabel} options={PRICES} onSelect={setPrice} />
+          </div>
         </div>
-        <div style={{ borderRight: '1px solid #e5e5e5' }}>
-          <Dropdown label="Rating" value={ratingLabel} options={RATINGS} onSelect={setRating} />
+        <div className="border-r border-gray-100">
+          <div className="p-3">
+            <Dropdown label="Rating" value={ratingLabel} options={RATINGS} onSelect={setRating} />
+          </div>
         </div>
-        <button
-          onClick={handleDiscover}
-          type="button"
-          style={{
-            padding: '12px 28px',
-            background: '#1A1A1A',
-            color: '#fff',
-            fontSize: 14,
-            fontWeight: 600,
-            border: 'none',
-            cursor: 'pointer',
-            borderRadius: '0 12px 12px 0',
-          }}
-        >
-          Discover
-        </button>
+        <div>
+          <button
+            onClick={handleDiscover}
+            type="button"
+            className="w-full h-full px-6 py-3 bg-primary text-white font-semibold text-sm hover:bg-primary/90 transition-colors rounded-tr-xl rounded-br-xl"
+          >
+            Discover
+          </button>
+        </div>
       </div>
     </div>
   );

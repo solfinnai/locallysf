@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+/* eslint-disable @next/next/no-img-element */
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 interface Photo {
   url: string;
@@ -16,17 +17,65 @@ interface PhotoGalleryProps {
 export default function PhotoGallery({ photos, placeName }: PhotoGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [lightbox, setLightbox] = useState(false);
+  const lightboxRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
+
+  const openLightbox = useCallback(() => {
+    setLightbox(true);
+    triggerRef.current?.focus();
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setLightbox(false);
+  }, []);
+
+  const goToPrevious = useCallback(() => {
+    setActiveIndex((prev) => (prev > 0 ? prev - 1 : photos.length - 1));
+  }, [photos.length]);
+
+  const goToNext = useCallback(() => {
+    setActiveIndex((prev) => (prev < photos.length - 1 ? prev + 1 : 0));
+  }, [photos.length]);
+
+  useEffect(() => {
+    if (!lightbox) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      switch (e.key) {
+        case 'Escape':
+          closeLightbox();
+          break;
+        case 'ArrowLeft':
+          e.preventDefault();
+          goToPrevious();
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          goToNext();
+          break;
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [lightbox, closeLightbox, goToPrevious, goToNext]);
 
   if (!photos || photos.length === 0) {
     return (
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '24px 16px 0' }}>
-        <div style={{
-          aspectRatio: '16/9', background: '#f0eeeb', borderRadius: 12,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-        }}>
-          <div style={{ textAlign: 'center', color: '#999' }}>
-            <span style={{ fontSize: 48 }}>📍</span>
-            <p style={{ marginTop: 8, fontSize: 14 }}>No photos available for {placeName}</p>
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-6">
+        <div
+          className="aspect-video bg-gray-100 rounded-xl flex items-center justify-center"
+          role="img"
+          aria-label={`No photos available for ${placeName}`}
+        >
+          <div className="text-center text-gray-400">
+            <span className="text-5xl">📍</span>
+            <p className="mt-2 text-sm">No photos available for {placeName}</p>
           </div>
         </div>
       </div>
@@ -35,177 +84,180 @@ export default function PhotoGallery({ photos, placeName }: PhotoGalleryProps) {
 
   const active = photos[activeIndex];
 
-  // Lightbox overlay
   if (lightbox) {
     return (
-      <>
-        <style>{`body { overflow: hidden; }`}</style>
-        <div
-          onClick={() => setLightbox(false)}
-          style={{
-            position: 'fixed', inset: 0, zIndex: 99999,
-            background: 'rgba(0,0,0,0.92)', display: 'flex',
-            flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            cursor: 'zoom-out',
-          }}
+      <div
+        ref={lightboxRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Photo gallery for ${placeName}`}
+        className="fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center cursor-zoom-out"
+        onClick={closeLightbox}
+      >
+        <button
+          onClick={closeLightbox}
+          className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+          aria-label="Close gallery"
         >
-          <img
-            src={active.url}
-            alt={active.alt || placeName}
-            onClick={e => e.stopPropagation()}
-            style={{
-              maxWidth: '90vw', maxHeight: '80vh',
-              objectFit: 'contain', borderRadius: 8, cursor: 'default',
-            }}
-          />
-          <div style={{
-            marginTop: 16, display: 'flex', gap: 8,
-            overflowX: 'auto', maxWidth: '90vw', padding: '0 8px',
-          }}>
-            {photos.map((p, i) => (
-              <button
-                key={i}
-                onClick={e => { e.stopPropagation(); setActiveIndex(i); }}
-                style={{
-                  flexShrink: 0, width: 64, height: 48, borderRadius: 6,
-                  overflow: 'hidden', border: i === activeIndex ? '2px solid #fff' : '2px solid transparent',
-                  opacity: i === activeIndex ? 1 : 0.5, cursor: 'pointer',
-                  padding: 0, background: 'none',
-                }}
-              >
-                <img src={p.url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              </button>
-            ))}
-          </div>
-          <button
-            onClick={() => setLightbox(false)}
-            style={{
-              position: 'absolute', top: 16, right: 16,
-              background: 'rgba(255,255,255,0.15)', border: 'none', color: '#fff',
-              width: 40, height: 40, borderRadius: '50%', fontSize: 18,
-              cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}
-          >✕</button>
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, marginTop: 12 }}>
-            {activeIndex + 1} / {photos.length}
-          </p>
+          ✕
+        </button>
+
+        <img
+          src={active.url}
+          alt={active.alt || `${placeName} photo ${activeIndex + 1}`}
+          className="max-w-[90vw] max-h-[80vh] object-contain rounded-lg cursor-default"
+          onClick={(e) => e.stopPropagation()}
+        />
+
+        <div
+          className="flex gap-2 mt-6 overflow-x-auto max-w-[90vw] px-2"
+          onClick={(e) => e.stopPropagation()}
+          role="list"
+          aria-label="Photo thumbnails"
+        >
+          {photos.map((photo, i) => (
+            <button
+              key={i}
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveIndex(i);
+              }}
+              className={`flex-shrink-0 w-16 h-12 rounded-md overflow-hidden border-2 transition-all ${
+                i === activeIndex
+                  ? 'border-white opacity-100'
+                  : 'border-transparent opacity-50 hover:opacity-75'
+              }`}
+              aria-label={`View photo ${i + 1}`}
+              aria-current={i === activeIndex}
+            >
+              <img
+                src={photo.url}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            </button>
+          ))}
         </div>
-      </>
+
+        <p className="text-white/50 text-sm mt-4" aria-live="polite">
+          {activeIndex + 1} / {photos.length}
+        </p>
+
+        <div className="absolute left-4 top-1/2 -translate-y-1/2">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              goToPrevious();
+            }}
+            className="w-12 h-12 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+            aria-label="Previous photo"
+          >
+            ←
+          </button>
+        </div>
+
+        <div className="absolute right-4 top-1/2 -translate-y-1/2">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              goToNext();
+            }}
+            className="w-12 h-12 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+            aria-label="Next photo"
+          >
+            →
+          </button>
+        </div>
+      </div>
     );
   }
 
-  // Single photo
   if (photos.length === 1) {
     return (
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '24px 16px 0' }}>
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-6">
         <div
-          onClick={() => setLightbox(true)}
-          style={{ borderRadius: 12, overflow: 'hidden', cursor: 'zoom-in' }}
+          onClick={openLightbox}
+          className="rounded-xl overflow-hidden cursor-zoom-in"
+          ref={triggerRef}
+          tabIndex={0}
+          role="button"
+          aria-label={`Open photo in gallery for ${placeName}`}
+          onKeyDown={(e) => e.key === 'Enter' && openLightbox()}
         >
           <img
             src={photos[0].url}
             alt={photos[0].alt || placeName}
-            style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            className="w-full aspect-video object-cover"
           />
         </div>
+        {photos[0].attribution && (
+          <p className="text-center text-xs text-gray-500 mt-2">
+            Photo by {photos[0].attribution}
+          </p>
+        )}
       </div>
     );
   }
 
-  // Multi-photo gallery
   const thumbs = photos.filter((_, i) => i !== activeIndex).slice(0, 3);
 
   return (
-    <div style={{ maxWidth: 1200, margin: '0 auto', padding: '24px 16px 0' }}>
-      {/* MOBILE: < 640px — hero + horizontal scroll thumbs */}
-      <div className="gallery-mobile" style={{ display: 'none' }}>
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-6">
+      <div className="hidden sm:block">
         <div
-          onClick={() => setLightbox(true)}
-          style={{ borderRadius: 12, overflow: 'hidden', cursor: 'zoom-in', position: 'relative' }}
+          className="grid gap-1 rounded-xl overflow-hidden"
+          style={{
+            gridTemplateColumns: thumbs.length > 0 ? '2fr 1fr' : '1fr',
+          }}
         >
-          <img
-            src={active.url}
-            alt={active.alt || placeName}
-            style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
-          />
-          <div style={{
-            position: 'absolute', bottom: 8, right: 8,
-            background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: 12,
-            padding: '4px 10px', borderRadius: 16,
-          }}>
-            {activeIndex + 1} / {photos.length}
-          </div>
-        </div>
-        <div style={{ display: 'flex', gap: 6, marginTop: 6, overflowX: 'auto', paddingBottom: 4 }}>
-          {photos.map((p, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveIndex(i)}
-              style={{
-                flexShrink: 0, width: 72, height: 54, borderRadius: 8,
-                overflow: 'hidden', border: i === activeIndex ? '2px solid #E8A838' : '2px solid transparent',
-                padding: 0, background: 'none', cursor: 'pointer',
-              }}
-            >
-              <img src={p.url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* DESKTOP: >= 640px — hero + side thumbnails grid */}
-      <div className="gallery-desktop" style={{ display: 'none' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: thumbs.length > 0 ? '2fr 1fr' : '1fr',
-          gap: 4,
-          borderRadius: 12,
-          overflow: 'hidden',
-        }}>
-          {/* Hero */}
           <div
-            onClick={() => setLightbox(true)}
-            style={{ cursor: 'zoom-in', position: 'relative' }}
+            className="cursor-zoom-in relative"
+            onClick={openLightbox}
+            ref={triggerRef}
+            tabIndex={0}
+            role="button"
+            aria-label={`Open photo ${activeIndex + 1} in gallery`}
+            onKeyDown={(e) => e.key === 'Enter' && openLightbox()}
           >
             <img
               src={active.url}
-              alt={active.alt || placeName}
-              style={{
-                width: '100%', height: '100%',
-                aspectRatio: thumbs.length > 0 ? 'auto' : '16/9',
-                objectFit: 'cover', objectPosition: 'center', display: 'block',
-              }}
+              alt={active.alt || `${placeName} photo ${activeIndex + 1}`}
+              className="w-full object-cover"
+              style={{ aspectRatio: thumbs.length > 0 ? 'auto' : '16/9', height: thumbs.length > 0 ? '100%' : 'auto' }}
             />
-            <div style={{
-              position: 'absolute', bottom: 10, right: 10,
-              background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: 12,
-              padding: '5px 12px', borderRadius: 20, display: 'flex', alignItems: 'center', gap: 6,
-            }}>
+            <div className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5">
               📷 {activeIndex + 1} / {photos.length}
             </div>
           </div>
 
-          {/* Thumbnail grid */}
           {thumbs.length > 0 && (
-            <div style={{
-              display: 'grid',
-              gridTemplateRows: thumbs.length === 1 ? '1fr' : thumbs.length === 2 ? '1fr 1fr' : '1fr 1fr 1fr',
-              gap: 4,
-            }}>
-              {thumbs.map((p, i) => {
-                const origIdx = photos.indexOf(p);
+            <div
+              className="grid gap-1"
+              style={{
+                gridTemplateRows:
+                  thumbs.length === 1
+                    ? '1fr'
+                    : thumbs.length === 2
+                    ? '1fr 1fr'
+                    : '1fr 1fr 1fr',
+              }}
+            >
+              {thumbs.map((photo, i) => {
+                const origIdx = photos.indexOf(photo);
                 return (
                   <div
                     key={i}
                     onClick={() => setActiveIndex(origIdx)}
-                    style={{ cursor: 'pointer', overflow: 'hidden', position: 'relative' }}
-                    onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
-                    onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+                    className="cursor-pointer overflow-hidden hover:opacity-80 transition-opacity"
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`View photo ${origIdx + 1}`}
+                    onKeyDown={(e) => e.key === 'Enter' && setActiveIndex(origIdx)}
                   >
                     <img
-                      src={p.url}
-                      alt={p.alt || `${placeName} photo`}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+                      src={photo.url}
+                      alt={photo.alt || `${placeName} thumbnail`}
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 );
@@ -215,24 +267,51 @@ export default function PhotoGallery({ photos, placeName }: PhotoGalleryProps) {
         </div>
       </div>
 
-      {/* Responsive CSS */}
-      <style>{`
-        @media (max-width: 639px) {
-          .gallery-mobile { display: block !important; }
-          .gallery-desktop { display: none !important; }
-        }
-        @media (min-width: 640px) {
-          .gallery-mobile { display: none !important; }
-          .gallery-desktop { display: block !important; }
-          .gallery-desktop > div { aspect-ratio: 5/2; }
-        }
-        @media (min-width: 1024px) {
-          .gallery-desktop > div { aspect-ratio: 5/2; }
-        }
-      `}</style>
+      <div className="sm:hidden">
+        <div
+          onClick={openLightbox}
+          className="rounded-xl overflow-hidden cursor-zoom-in relative"
+          ref={triggerRef}
+          tabIndex={0}
+          role="button"
+          aria-label={`Open photo ${activeIndex + 1} in gallery`}
+          onKeyDown={(e) => e.key === 'Enter' && openLightbox()}
+        >
+          <img
+            src={active.url}
+            alt={active.alt || `${placeName} photo ${activeIndex + 1}`}
+            className="w-full aspect-[4/3] object-cover"
+          />
+          <div className="absolute bottom-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded-full">
+            {activeIndex + 1} / {photos.length}
+          </div>
+        </div>
+
+        <div className="flex gap-1.5 mt-2 overflow-x-auto pb-1">
+          {photos.map((photo, i) => (
+            <button
+              key={i}
+              onClick={() => setActiveIndex(i)}
+              className={`flex-shrink-0 w-18 h-14 rounded-lg overflow-hidden border-2 transition-all ${
+                i === activeIndex
+                  ? 'border-accent'
+                  : 'border-transparent opacity-50'
+              }`}
+              aria-label={`View photo ${i + 1}`}
+              aria-current={i === activeIndex}
+            >
+              <img
+                src={photo.url}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            </button>
+          ))}
+        </div>
+      </div>
 
       {active.attribution && (
-        <p style={{ textAlign: 'center', fontSize: 12, color: '#999', marginTop: 8 }}>
+        <p className="text-center text-xs text-gray-500 mt-2">
           Photo by {active.attribution}
         </p>
       )}
