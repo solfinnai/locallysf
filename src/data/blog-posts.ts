@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
     neighborhood: "Mission District",
     publishedAt: "2026-03-15",
     readTime: "8 min read",
-    coverImage: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=1200&q=80",
+    coverImage: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
     content: `
       <h2>Why the Mission District Is SF's Food Capital</h2>
       
