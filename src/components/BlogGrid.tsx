@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { BlogPost } from '@/data/blog-posts';
 
 interface BlogGridProps {
@@ -121,12 +120,10 @@ export default function BlogGrid({ posts }: BlogGridProps) {
               <Link key={post.slug} href={`/blog/${post.slug}`} className="block no-underline">
                 <article className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col">
                   <div className="relative h-48 overflow-hidden">
-                    <Image
+                    <img
                       src={post.coverImage}
                       alt={post.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover"
+                      className="w-full h-full object-cover"
                     />
                     <div className="absolute top-3 left-3 bg-[#E8A838] text-[#0A1628] px-3 py-1 rounded-full text-xs font-bold">
                       {post.neighborhood}

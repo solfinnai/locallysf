@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { blogPosts } from '@/data/blog-posts';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -56,13 +55,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <Navigation variant="dark" />
 
       <header className="relative h-[450px] overflow-hidden">
-        <Image
+        <img
           src={post.coverImage}
           alt={post.title}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
+          className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/40 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 px-6 pb-12">
@@ -110,12 +106,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <Link key={rp.slug} href={`/blog/${rp.slug}`} className="block group">
                 <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
                   <div className="relative h-44 overflow-hidden">
-                    <Image
+                    <img
                       src={rp.coverImage}
                       alt={rp.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="p-5">
