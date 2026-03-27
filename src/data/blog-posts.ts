@@ -630,5 +630,142 @@ export const blogPosts: BlogPost[] = [
 
       <p>Whether you're seeking a memorable brunch with Golden Gate Bridge views, a romantic waterfront dinner, or simply excellent neighborhood dining, the Marina District delivers experiences that showcase San Francisco's natural beauty alongside its culinary excellence.</p>
     `
+  },
+  {
+    slug: "union-square-shopping-complete-guide",
+    title: "Union Square Shopping: The Complete Local's Guide",
+    excerpt: "Navigate San Francisco's premier shopping district from luxury boutiques to hidden discount gems. Everything you need to know about shopping Union Square.",
+    category: "shopping",
+    neighborhood: "Union Square",
+    publishedAt: "2026-03-09",
+    readTime: "8 min read",
+    coverImage: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80",
+    content: `
+      <h2>San Francisco's Premier Shopping Destination</h2>
+      
+      <p>Union Square stands as San Francisco's shopping epicenter, where world-renowned luxury brands coexist with independent boutiques and everything in between. This compact area bounded by Powell, Post, Kearny, and Stockton Streets offers retail therapy ranging from high-end designer boutiques to accessible department stores and unique local finds.</p>
+
+      <h2>Luxury Shopping on Maiden Lane</h2>
+      
+      <h3>The Flagship Stores</h3>
+      <p>Nevada Street, commonly called Maiden Lane, offers an elevated shopping experience with luxury boutiques housed in historic buildings. The pedestrian-only street features architecture by Frank Lloyd Wright, creating a European-style shopping environment that distinguishes it from typical American retail districts.</p>
+      
+      <h3>Department Store Row</h3>
+      <p>Westfield San Francisco Centre anchors the southern end of Union Square with its massive Bloomingdale's and Nordstrom anchors. The historic Macy's flagship occupies the eastern edge, while Saks Fifth Avenue sits at the northern entrance, creating a department store corridor that rivals any shopping destination.</p>
+
+      <h2>Finding Deals and Discounts</h2>
+      
+      <h3>Off-Mall Treasures</h3>
+      <p>The basement level of Westfield San Francisco Centre houses outlet-style stores at reduced prices. Walking a few blocks to Mason Street reveals outlet stores for major brands offering significant discounts on previous seasons' merchandise.</p>
+      
+      <h3>Sample Sales and Clearance</h3>
+      <p>Major retailers rotate through sample sales and clearance events. Sign up for email lists from your favorite brands to receive notifications about these limited-time opportunities for designer goods at reduced prices.</p>
+
+      <h2>Independent Boutiques and Local Finds</h2>
+      
+      <h3>Emerging Designers</h3>
+      <p>Side streets around Union Square hide boutiques featuring emerging designers and independent fashion labels. These stores offer unique pieces you won't find at chain retailers, with knowledgeable staff providing personalized styling advice.</p>
+      
+      <h3>Artisanal Goods</h3>
+      <p>Several shops specialize in locally-made artisan goods, from handcrafted jewelry to artisanal food products. These establishments offer meaningful souvenirs and gifts that support local makers rather than mass production.</p>
+
+      <h2>Hidden Gems and Local Secrets</h2>
+      
+      <h3>Leather Goods on Geary</h3>
+      <p>Small leather goods shops on Geary Street offer quality bags, wallets, and accessories at better prices than tourist-heavy areas. These family-owned businesses often provide customization services unavailable at larger retailers.</p>
+      
+      <h3>Watch and Jewelry District</h3>
+      <p>The area around Grant Avenue and Kearny Street houses watch dealers and jewelry stores ranging from high-end pawn shops to certified pre-owned luxury timepiece specialists. Knowledgeable staff can guide you through purchasing decisions for significant investments.</p>
+
+      <h2>Art Galleries and Culture</h2>
+      
+      <p>Union Square's shopping district includes several art galleries offering original works at various price points. These galleries provide cultural enrichment alongside retail therapy, with many featuring rotating exhibitions from local and international artists.</p>
+
+      <h2>Getting There and Getting Around</h2>
+      
+      <ul>
+        <li><strong>BART:</strong> Powell Street station provides direct access to Union Square</li>
+        <li><strong>Parking:</strong> Several garages nearby; validated parking at major shopping centers</li>
+        <li><strong>Muni:</strong> Multiple bus lines serve the area</li>
+        <li><strong>Cable Cars:</strong> Powell-Hyde and Powell-Mason lines stop nearby</li>
+      </ul>
+
+      <h2>Making the Most of Your Shopping Trip</h2>
+      
+      <p>Union Square rewards shoppers who plan strategically. Start with department stores to orient yourself and find sales, then explore side streets for unique finds. Take breaks at nearby cafés and restaurants to refuel before continuing. Many stores offer international shipping if you're traveling light, and hotels in the area often provide package delivery services.</p>
+
+      <p>Whether you're hunting for luxury goods, seeking unique local products, or simply exploring San Francisco's retail culture, Union Square delivers shopping experiences ranging from essential to extraordinary. Come prepared to walk, compare prices, and discover unexpected treasures in one of America's premier shopping destinations.</p>
+    `
+  },
+  {
+    slug: "golden-gate-park-attractions-complete-guide",
+    title: "Golden Gate Park: Top Attractions and Hidden Gems",
+    excerpt: "From world-class museums to secluded gardens, discover everything Golden Gate Park has to offer beyond the obvious tourist stops.",
+    category: "attractions",
+    neighborhood: "Golden Gate Park",
+    publishedAt: "2026-03-08",
+    readTime: "9 min read",
+    coverImage: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=80",
+    content: `
+      <h2>San Francisco's Urban Oasis</h2>
+      
+      <p>Golden Gate Park stretches three miles from the Haight to the ocean, offering an impossibly green escape from urban life. This man-made wonder houses world-class museums, tranquil gardens, recreational facilities, and natural landscapes—all within city limits. Whether you have an hour or a full day, the park rewards exploration with discoveries ranging from iconic attractions to hidden corners that even locals overlook.</p>
+
+      <h2>Must-Visit Museums</h2>
+      
+      <h3>de Young Museum</h3>
+      <p>The de Young showcases American art, international textiles, and contemporary pieces in a building whose copper facade develops a distinctive green patina. The Hamon Tower observation floor provides panoramic park and city views, while the sculpture garden offers contemplative space between gallery visits. Free with museum admission on Tuesday.</p>
+      
+      <h3>California Academy of Sciences</h3>
+      <p>This all-in-one natural history museum, planetarium, aquarium, and rainforest under one living roof consistently ranks among the city's most popular attractions. The four-story rainforest biodome houses free-flying birds and tropical plants, while the aquarium's walk-through tunnel provides immersive ocean experiences. The building itself achieved LEED Platinum certification, demonstrating sustainable museum design.</p>
+
+      <h2>Beautiful Gardens</h2>
+      
+      <h3>Japanese Tea Garden</h3>
+      <p>The oldest public Japanese garden in the United States features traditional architecture, bonsai collections, and the iconic drum bridge. Pagoda-inspired structures and carefully maintained plantings create authentic Japanese aesthetic experiences. Allow at least an hour to fully appreciate the garden's contemplative atmosphere.</p>
+      
+      <h3>San Francisco Botanical Garden</h3>
+      <p>Located near the museum district, this 55-acre garden showcases plants from around the world organized by geographic region. The Moon-viewing Garden and other specialized collections offer quiet spaces for reflection away from the park's busier areas. Free for San Francisco residents with ID.</p>
+      
+      <h3>Conservatory of Flowers</h3>
+      <p>The Victorian greenhouse houses tropical, aquatic, and Highland tropical plants from around the world. Recent renovations have improved climate control and accessibility, making the exotic plant collections more enjoyable year-round.</p>
+
+      <h2>Hidden Gems</h2>
+      
+      <h3>Stow Lake</h3>
+      <p>This quiet lake in the park's center offers rowboat rentals and a picturesque waterfall island. The Strawberry Hill island at the lake's center provides hiking trails and panoramic views, accessible by a charming footbridge. Less crowded than main park attractions.</p>
+      
+      <h3>Bison Paddock</h3>
+      <p>The bison herd grazing near Kennedy Drive represents the park's wild frontier heritage. The animals are most active early morning and late afternoon, providing excellent wildlife viewing opportunities without leaving the city.</p>
+      
+      <h3>Shakespeare Garden</h3>
+      <p>This small garden near the Conservatory of Flowers features plants mentioned in Shakespeare's works, identified with plaques quoting relevant passages. The intimate setting provides romantic photo opportunities and educational experiences for literature enthusiasts.</p>
+
+      <h2>Recreation and Activities</h2>
+      
+      <h3>Biking and Rollerblading</h3>
+      <p>The park's trails accommodate cyclists and rollerbladers of all skill levels. Rentals available near the eastern entrance, with dedicated lanes keeping recreational users separate from vehicle traffic.</p>
+      
+      <h3>Fishing</h3>
+      <p>Stow Lake andk Fisherman's Wharf offer catch-and-release fishing opportunities. Fishing permits are required and available from the Park Department office.</p>
+      
+      <h3>Sports Facilities</h3>
+      <p>Tennis courts, soccer fields, and golf courses scattered throughout the park provide recreational opportunities. The Polo Fields offer open space for frisbee, kite flying, and pickup games.</p>
+
+      <h2>Best Times to Visit</h2>
+      
+      <ul>
+        <li><strong>Weekday mornings:</strong> Fewer crowds, dew-covered gardens, misty atmosphere</li>
+        <li><strong>Weekend afternoons:</strong> Most vibrant atmosphere, food vendors, street performers</li>
+        <li><strong>Spring:</strong> Wildflower blooms throughout the park</li>
+        <li><strong>Fall:</strong> Comfortable temperatures, autumn colors, fewer tourists</li>
+      </ul>
+
+      <h2>Practical Information</h2>
+      
+      <p>The park extends from Stanyan Street to Ocean Beach, approximately 3.5 miles long. Several entrances provide access via Muni bus lines. Parking is limited; public transit or bike rental is recommended. Food options range from museum cafes to the historic Stow Lake Boathouse. Weather can change rapidly; layers and comfortable walking shoes serve visitors well.</p>
+
+      <p>Golden Gate Park rewards repeated exploration. Whether you're visiting museums, wandering gardens, or simply enjoying green space, the park offers fresh discoveries with each visit. Start with established attractions, then venture beyond the obvious paths to discover why San Franciscans treasure this urban sanctuary.</p>
+    `
   }
 ];
