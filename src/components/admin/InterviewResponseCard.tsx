@@ -3,6 +3,7 @@
 import { InterviewResponse } from '@/lib/crm-types';
 import { INTERVIEW_QUESTIONS } from '@/data/crm-data';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface InterviewResponseCardProps {
   interview: InterviewResponse;
@@ -85,12 +86,22 @@ export function InterviewResponseCard({ interview, businessName, onViewDetails }
             onClick={() => onViewDetails?.(interview)}
             className="flex-1 px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
           >
-            View Full Response
+            View Response
           </button>
-          {interview.status === 'received' && (
-            <button className="px-4 py-2 bg-green-500 text-white rounded-lg text-sm font-medium hover:bg-green-600 transition-colors">
-              Approve
-            </button>
+          {interview.status === 'approved' && (
+            <Link
+              href={`/admin/spotlight/new?interviewId=${interview.id}`}
+              className="px-4 py-2 bg-accent text-primary rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors flex items-center gap-1"
+            >
+              <span>✨</span>
+              Spotlight
+            </Link>
+          )}
+          {interview.status === 'published' && (
+            <span className="px-4 py-2 bg-purple-100 text-purple-600 rounded-lg text-sm font-medium flex items-center gap-1">
+              <span>✓</span>
+              Published
+            </span>
           )}
         </div>
       </div>
@@ -193,6 +204,15 @@ export function InterviewResponseViewer({ interview, businessName, onClose, onAp
                 Approve for Publication
               </button>
             </>
+          )}
+          {interview.status === 'approved' && (
+            <Link
+              href={`/admin/spotlight/new?interviewId=${interview.id}`}
+              className="px-6 py-2.5 bg-accent text-primary rounded-lg font-medium hover:bg-accent/90 transition-colors flex items-center gap-2"
+            >
+              <span>✨</span>
+              Create Spotlight Article
+            </Link>
           )}
         </div>
       </div>

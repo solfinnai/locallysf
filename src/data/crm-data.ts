@@ -137,12 +137,12 @@ export const sampleInterviews: InterviewResponse[] = [
       'https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=1200',
       'https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=1200',
     ],
-    status: 'received',
+    status: 'approved',
     receivedAt: '2026-03-20',
-    approvedAt: null,
-    notes: 'Great responses! Ready for editing.',
+    approvedAt: '2026-03-22',
+    notes: 'Great responses! Ready for spotlight article.',
     createdAt: '2026-03-15',
-    updatedAt: '2026-03-20',
+    updatedAt: '2026-03-22',
   },
 ];
 
